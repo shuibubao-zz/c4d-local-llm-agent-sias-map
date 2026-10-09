@@ -1,0 +1,85 @@
+{
+  "checked_at": "2026-10-09 18:32:07",
+  "hardware": {
+    "os": "Windows 11 (10.0.26200)",
+    "python": "3.13.14",
+    "machine": "AMD64",
+    "cpu": "13th Gen Intel(R) Core(TM) i7-13620H",
+    "cpu_logical": 16,
+    "ram_total_gb": 15.69,
+    "ram_free_gb": 1.36,
+    "ram_load_pct": 91,
+    "gpu": [
+      "Intel(R) UHD Graphics",
+      "Todesk Virtual Display Adapter"
+    ],
+    "disk_free_gb": 55.2
+  },
+  "ollama": {
+    "running": true,
+    "version": "0.40.2",
+    "host": "http://localhost:11434",
+    "error": null
+  },
+  "target_model": "gemma4:e4b-it-q4_K_M",
+  "target_model_present": true,
+  "model_detail_keys": [
+    "thinking",
+    "license",
+    "modelfile",
+    "parameters",
+    "template",
+    "details",
+    "model_info",
+    "projector_info",
+    "capabilities",
+    "modified_at",
+    "requires"
+  ],
+  "model_details": {
+    "parent_model": "gemma4-validation-20260929:e4b-imatrix-attention-q6-q8-draft2",
+    "format": "gguf",
+    "family": "gemma4",
+    "families": [
+      "gemma4"
+    ],
+    "parameter_size": "7.5B",
+    "quantization_level": "Q4_K_M",
+    "runner": "llamacpp"
+  },
+  "speed_test": {
+    "content": "```json\n{\"status\":\"ok\",\"model\":\"gemma4\"}\n```",
+    "raw_response": {
+      "id": "chatcmpl-178",
+      "object": "chat.completion",
+      "created": 1791541936,
+      "model": "gemma4:e4b-it-q4_K_M",
+      "system_fingerprint": "fp_ollama",
+      "choices": [
+        {
+          "index": 0,
+          "message": {
+            "role": "assistant",
+            "content": "```json\n{\"status\":\"ok\",\"model\":\"gemma4\"}\n```",
+            "reasoning": "The user wants me to output a specific JSON object: `{\"status\":\"ok\",\"model\":\"gemma4\"}`.\nI must ensure that I output *only* this JSON and no other text."
+          },
+          "finish_reason": "stop"
+        }
+      ],
+      "usage": {
+        "prompt_tokens": 48,
+        "prompt_tokens_details": {
+          "cached_tokens": 43
+        },
+        "completion_tokens": 63,
+        "total_tokens": 111
+      }
+    },
+    "elapsed_time": 6.913,
+    "prompt_tokens": 48,
+    "completion_tokens": 63,
+    "total_tokens": 111,
+    "tokens_per_second": 9.11,
+    "eval_tokens_per_second": 0.0
+  }
+}

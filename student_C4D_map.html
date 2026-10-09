@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>SIAS University 周边交互式地图 · 本地 Gemma 4 生成</title>
+<meta name="description" content="由本地 Gemma 4 模型（gemma4:e4b-it-q4_K_M，量化 Q4_K_M，Ollama 本地推理）生成的地点数据渲染而成">
+<meta name="generator" content="student_C4D_agent-skill (Python + Folium)">
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_d2c6086729f4dec2cb663a66ad91602f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ardhi/Leaflet.MousePosition/src/L.Control.MousePosition.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+</head>
+<body>
+    
+    
+    <div style="position:fixed;top:12px;left:52px;z-index:9999;width:270px;
+                background:rgba(255,255,255,.95);border-radius:10px;
+                box-shadow:0 4px 18px rgba(0,0,0,.22);padding:14px 16px;
+                font-family:'Microsoft YaHei','PingFang SC',sans-serif;">
+      <div style="font-size:16px;font-weight:700;color:#1a3a72;margin-bottom:4px;">
+        SIAS University 周边交互式地图
+      </div>
+      <div style="font-size:11px;color:#7a8699;line-height:1.6;margin-bottom:8px;">
+        模型 gemma4:e4b-it-q4_K_M（Q4_K_M）· Ollama · 纯本地推理 · 数据由本地模型生成
+      </div>
+      <div style="border-top:1px solid #e3e8ef;padding-top:8px;">
+        <div style="font-size:12px;font-weight:700;color:#333;margin-bottom:4px;">
+          点位图例（共 14 个）
+        </div>
+        <div style='margin:3px 0;'><span style='display:inline-block;width:11px;height:11px;border-radius:50%;background:#8b1a1a;margin-right:6px;vertical-align:middle;border:1px solid #fff;'></span>校门/入口 <b>2</b></div><div style='margin:3px 0;'><span style='display:inline-block;width:11px;height:11px;border-radius:50%;background:#2c6fd1;margin-right:6px;vertical-align:middle;border:1px solid #fff;'></span>教学/科研 <b>4</b></div><div style='margin:3px 0;'><span style='display:inline-block;width:11px;height:11px;border-radius:50%;background:#7b4fbf;margin-right:6px;vertical-align:middle;border:1px solid #fff;'></span>图书馆 <b>1</b></div><div style='margin:3px 0;'><span style='display:inline-block;width:11px;height:11px;border-radius:50%;background:#e8820c;margin-right:6px;vertical-align:middle;border:1px solid #fff;'></span>宿舍/生活 <b>3</b></div><div style='margin:3px 0;'><span style='display:inline-block;width:11px;height:11px;border-radius:50%;background:#d63b3b;margin-right:6px;vertical-align:middle;border:1px solid #fff;'></span>餐饮 <b>1</b></div><div style='margin:3px 0;'><span style='display:inline-block;width:11px;height:11px;border-radius:50%;background:#4a8f9e;margin-right:6px;vertical-align:middle;border:1px solid #fff;'></span>行政/办公 <b>2</b></div><div style='margin:3px 0;'><span style='display:inline-block;width:11px;height:11px;border-radius:50%;background:#1d6b36;margin-right:6px;vertical-align:middle;border:1px solid #fff;'></span>周边地标 <b>1</b></div>
+      </div>
+      <div style="border-top:1px solid #e3e8ef;margin-top:8px;padding-top:8px;
+                  font-size:11px;color:#7a8699;line-height:1.7;">
+        数据来源：<b>本地 Gemma 4 模型</b>（Ollama，localhost:11434）<br>
+        渲染：Python + Folium（Leaflet.js）<br>
+        所有点位坐标由模型生成，代码未硬编码地点数据
+      </div>
+    </div>
+    <div style='position:fixed;bottom:8px;left:8px;z-index:9998;font-size:11px;color:#5a6472;background:rgba(255,255,255,.9);padding:4px 10px;border-radius:6px;font-family:sans-serif;'>由 student 的本地 LLM Agent 生成 · 2026-10-09 18:37</div>
+    
+            <div class="folium-map" id="map_d2c6086729f4dec2cb663a66ad91602f" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_d2c6086729f4dec2cb663a66ad91602f = L.map(
+                "map_d2c6086729f4dec2cb663a66ad91602f",
+                {
+                    center: [34.402, 113.758],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 16,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+
+            
+
+        
+    
+            var tile_layer_59c4d7cc32caff049627941859775443 = L.tileLayer(
+                "https://webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn\u0026size=1\u0026scale=1\u0026style=8\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u9ad8\u5fb7\u5730\u56fe AutoNavi",
+  "subdomains": "1234",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_59c4d7cc32caff049627941859775443.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var tile_layer_cfc2d561fe6747c88f523ced53e650ca = L.tileLayer(
+                "https://webst0{s}.is.autonavi.com/appmaptile?style=6\u0026x={x}\u0026y={y}\u0026z={z}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u9ad8\u5fb7\u5730\u56fe AutoNavi",
+  "subdomains": "1234",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cfc2d561fe6747c88f523ced53e650ca.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var tile_layer_0dbe79e0d513cb08d4e6711b184910e3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0dbe79e0d513cb08d4e6711b184910e3.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var feature_group_61eef9947a3460d38deac64d5173b78b = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_4dfbc098c207e8c2ea7f7c9cc97cdbcc = L.circleMarker(
+                [34.4035, 113.759],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_61eef9947a3460d38deac64d5173b78b);
+        
+    
+        var popup_8cd2b27c0208e09ccc09de7624817bc0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7aa5e1f6000d48df7b1937bb9826fe44 = $(`<div id="html_7aa5e1f6000d48df7b1937bb9826fe44" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         1. 主校门       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Main Gate</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的主要入口，是学生和访客进入校园的门户。这里通常是活动和集会的起点，象征着学术旅程的开始。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：校门/入口<br>         <b>纬度</b>：34.4035　<b>经度</b>：113.759       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_8cd2b27c0208e09ccc09de7624817bc0.setContent(html_7aa5e1f6000d48df7b1937bb9826fe44);
+            
+        
+
+        circle_marker_4dfbc098c207e8c2ea7f7c9cc97cdbcc.bindPopup(popup_8cd2b27c0208e09ccc09de7624817bc0)
+        ;
+
+        
+    
+    
+            circle_marker_4dfbc098c207e8c2ea7f7c9cc97cdbcc.bindTooltip(
+                `<div>
+                     1. 主校门
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1027aed6ca0512f229aa5f84096d4e4a = L.marker(
+                [34.4035, 113.759],
+                {
+}
+            ).addTo(feature_group_61eef9947a3460d38deac64d5173b78b);
+        
+    
+            var div_icon_35e5881c0934fecc12562695fa225eab = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#8b1a1a;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e1\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_36e035447a3e46ce4a602723af255ae0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1492f39fa8663f16f23ee61620dcf690 = $(`<div id="html_1492f39fa8663f16f23ee61620dcf690" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         1. 主校门       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Main Gate</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的主要入口，是学生和访客进入校园的门户。这里通常是活动和集会的起点，象征着学术旅程的开始。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：校门/入口<br>         <b>纬度</b>：34.4035　<b>经度</b>：113.759       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_36e035447a3e46ce4a602723af255ae0.setContent(html_1492f39fa8663f16f23ee61620dcf690);
+            
+        
+
+        marker_1027aed6ca0512f229aa5f84096d4e4a.bindPopup(popup_36e035447a3e46ce4a602723af255ae0)
+        ;
+
+        
+    
+    
+            marker_1027aed6ca0512f229aa5f84096d4e4a.bindTooltip(
+                `<div>
+                     主校门
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1027aed6ca0512f229aa5f84096d4e4a.setIcon(div_icon_35e5881c0934fecc12562695fa225eab);
+            
+    
+            var circle_marker_1b25ce73e1692e9964693d37c29c5b74 = L.circleMarker(
+                [34.4038, 113.7582],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkred", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_61eef9947a3460d38deac64d5173b78b);
+        
+    
+        var popup_f403aebe0af19636f0bf7e2bb21df901 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ed7d567ea3029ad745ad1c47e8d17041 = $(`<div id="html_ed7d567ea3029ad745ad1c47e8d17041" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         10. 北校门       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">North Campus Gate</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">校园的另一侧入口，连接着周边社区和交通网络。它为校园提供了便捷的外部通道和人流进出。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：校门/入口<br>         <b>纬度</b>：34.4038　<b>经度</b>：113.7582       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_f403aebe0af19636f0bf7e2bb21df901.setContent(html_ed7d567ea3029ad745ad1c47e8d17041);
+            
+        
+
+        circle_marker_1b25ce73e1692e9964693d37c29c5b74.bindPopup(popup_f403aebe0af19636f0bf7e2bb21df901)
+        ;
+
+        
+    
+    
+            circle_marker_1b25ce73e1692e9964693d37c29c5b74.bindTooltip(
+                `<div>
+                     10. 北校门
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4b030fb5826f82a4744626600a0f83fb = L.marker(
+                [34.4038, 113.7582],
+                {
+}
+            ).addTo(feature_group_61eef9947a3460d38deac64d5173b78b);
+        
+    
+            var div_icon_db5c30b14438f81f28bfb95172b8a60a = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#8b1a1a;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e10\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_e76545a6f5a177f0e8fb1bdf59f08028 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1e1595bc341027c7c1e17e5bec5a94de = $(`<div id="html_1e1595bc341027c7c1e17e5bec5a94de" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         10. 北校门       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">North Campus Gate</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">校园的另一侧入口，连接着周边社区和交通网络。它为校园提供了便捷的外部通道和人流进出。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：校门/入口<br>         <b>纬度</b>：34.4038　<b>经度</b>：113.7582       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_e76545a6f5a177f0e8fb1bdf59f08028.setContent(html_1e1595bc341027c7c1e17e5bec5a94de);
+            
+        
+
+        marker_4b030fb5826f82a4744626600a0f83fb.bindPopup(popup_e76545a6f5a177f0e8fb1bdf59f08028)
+        ;
+
+        
+    
+    
+            marker_4b030fb5826f82a4744626600a0f83fb.bindTooltip(
+                `<div>
+                     北校门
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4b030fb5826f82a4744626600a0f83fb.setIcon(div_icon_db5c30b14438f81f28bfb95172b8a60a);
+            
+    
+            feature_group_61eef9947a3460d38deac64d5173b78b.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var feature_group_854257164172119c779d5beea6a2291d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_87f5762327efb071155e5470c9235cdc = L.circleMarker(
+                [34.4015, 113.7575],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "purple", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_854257164172119c779d5beea6a2291d);
+        
+    
+        var popup_d949b26b8cf1d80b551cb7fbfaa73c1b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_df860592f92ad7270d6eccd9ee1f3021 = $(`<div id="html_df860592f92ad7270d6eccd9ee1f3021" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         2. 中央图书馆       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Central Library</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的核心学习资源中心，提供丰富的学术书籍、电子数据库和安静的学习环境，是所有学生重要的求知场所。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：图书馆<br>         <b>纬度</b>：34.4015　<b>经度</b>：113.7575       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_d949b26b8cf1d80b551cb7fbfaa73c1b.setContent(html_df860592f92ad7270d6eccd9ee1f3021);
+            
+        
+
+        circle_marker_87f5762327efb071155e5470c9235cdc.bindPopup(popup_d949b26b8cf1d80b551cb7fbfaa73c1b)
+        ;
+
+        
+    
+    
+            circle_marker_87f5762327efb071155e5470c9235cdc.bindTooltip(
+                `<div>
+                     2. 中央图书馆
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_86010dcac427cadff40398a6f953a3dd = L.marker(
+                [34.4015, 113.7575],
+                {
+}
+            ).addTo(feature_group_854257164172119c779d5beea6a2291d);
+        
+    
+            var div_icon_75aa26a50c508c800b5a03b13566426c = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#7b4fbf;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e2\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_8fde96de57fb0a38b5ef4dfa72d8155f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4edc7107ac0a12d2f7e7381cf0bed47e = $(`<div id="html_4edc7107ac0a12d2f7e7381cf0bed47e" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         2. 中央图书馆       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Central Library</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的核心学习资源中心，提供丰富的学术书籍、电子数据库和安静的学习环境，是所有学生重要的求知场所。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：图书馆<br>         <b>纬度</b>：34.4015　<b>经度</b>：113.7575       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_8fde96de57fb0a38b5ef4dfa72d8155f.setContent(html_4edc7107ac0a12d2f7e7381cf0bed47e);
+            
+        
+
+        marker_86010dcac427cadff40398a6f953a3dd.bindPopup(popup_8fde96de57fb0a38b5ef4dfa72d8155f)
+        ;
+
+        
+    
+    
+            marker_86010dcac427cadff40398a6f953a3dd.bindTooltip(
+                `<div>
+                     中央图书馆
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_86010dcac427cadff40398a6f953a3dd.setIcon(div_icon_75aa26a50c508c800b5a03b13566426c);
+            
+    
+            feature_group_854257164172119c779d5beea6a2291d.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var feature_group_03701717bbba028b8113448a3f5f3f20 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_297e352ee223a1c83996177d815261b6 = L.circleMarker(
+                [34.4005, 113.7585],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+        var popup_1e76b57c709463026590341c6f3ddbbb = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6718f40d741d1016de6cd7fab990b101 = $(`<div id="html_6718f40d741d1016de6cd7fab990b101" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         3. 学生宿舍A区       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Student Dormitory A</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">为学生提供的住宿区域，设施齐全，是学生们生活和休息的主要场所。宿舍区紧邻教学楼，方便学生日常通勤。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4005　<b>经度</b>：113.7585       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_1e76b57c709463026590341c6f3ddbbb.setContent(html_6718f40d741d1016de6cd7fab990b101);
+            
+        
+
+        circle_marker_297e352ee223a1c83996177d815261b6.bindPopup(popup_1e76b57c709463026590341c6f3ddbbb)
+        ;
+
+        
+    
+    
+            circle_marker_297e352ee223a1c83996177d815261b6.bindTooltip(
+                `<div>
+                     3. 学生宿舍A区
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e2988809684828e58e3df60ca431f438 = L.marker(
+                [34.4005, 113.7585],
+                {
+}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+            var div_icon_6d9b2ea93f075e2af8493cc2e868dddb = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#2c6fd1;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e3\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_65343e685bec06eeea103ba62e6e6ff9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ec43cad79e3366e22e70078dd79a1148 = $(`<div id="html_ec43cad79e3366e22e70078dd79a1148" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         3. 学生宿舍A区       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Student Dormitory A</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">为学生提供的住宿区域，设施齐全，是学生们生活和休息的主要场所。宿舍区紧邻教学楼，方便学生日常通勤。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4005　<b>经度</b>：113.7585       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_65343e685bec06eeea103ba62e6e6ff9.setContent(html_ec43cad79e3366e22e70078dd79a1148);
+            
+        
+
+        marker_e2988809684828e58e3df60ca431f438.bindPopup(popup_65343e685bec06eeea103ba62e6e6ff9)
+        ;
+
+        
+    
+    
+            marker_e2988809684828e58e3df60ca431f438.bindTooltip(
+                `<div>
+                     学生宿舍A区
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e2988809684828e58e3df60ca431f438.setIcon(div_icon_6d9b2ea93f075e2af8493cc2e868dddb);
+            
+    
+            var circle_marker_da808a2c8bf02a910e8cd9080a15b53b = L.circleMarker(
+                [34.4025, 113.757],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+        var popup_2da24bde91e2dc5897697acde9c5203d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_186459ea1d2e8fbb2825c44dce12c6e6 = $(`<div id="html_186459ea1d2e8fbb2825c44dce12c6e6" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         4. 主教学楼       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Main Lecture Hall</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校最大的教学场所，用于举办大型讲座、毕业典礼和集体课程。这里是知识传播和学术交流的重要中心。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4025　<b>经度</b>：113.757       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_2da24bde91e2dc5897697acde9c5203d.setContent(html_186459ea1d2e8fbb2825c44dce12c6e6);
+            
+        
+
+        circle_marker_da808a2c8bf02a910e8cd9080a15b53b.bindPopup(popup_2da24bde91e2dc5897697acde9c5203d)
+        ;
+
+        
+    
+    
+            circle_marker_da808a2c8bf02a910e8cd9080a15b53b.bindTooltip(
+                `<div>
+                     4. 主教学楼
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_d65076347041c4784b2dc05b76070aeb = L.marker(
+                [34.4025, 113.757],
+                {
+}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+            var div_icon_1a8291059fad40c094d8895cf50b3ff6 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#2c6fd1;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e4\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_055ec8a2535f79f1788520619af915c3 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1088d5ea509f04056ccd748ef9689175 = $(`<div id="html_1088d5ea509f04056ccd748ef9689175" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         4. 主教学楼       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Main Lecture Hall</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校最大的教学场所，用于举办大型讲座、毕业典礼和集体课程。这里是知识传播和学术交流的重要中心。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4025　<b>经度</b>：113.757       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_055ec8a2535f79f1788520619af915c3.setContent(html_1088d5ea509f04056ccd748ef9689175);
+            
+        
+
+        marker_d65076347041c4784b2dc05b76070aeb.bindPopup(popup_055ec8a2535f79f1788520619af915c3)
+        ;
+
+        
+    
+    
+            marker_d65076347041c4784b2dc05b76070aeb.bindTooltip(
+                `<div>
+                     主教学楼
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d65076347041c4784b2dc05b76070aeb.setIcon(div_icon_1a8291059fad40c094d8895cf50b3ff6);
+            
+    
+            var circle_marker_7669dd944d9f0bce96627b068abca0d9 = L.circleMarker(
+                [34.4018, 113.7578],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+        var popup_4e4250cde30de3a8879d491746608262 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5159a01d1c7ab6bbd034ad2e88df304d = $(`<div id="html_5159a01d1c7ab6bbd034ad2e88df304d" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         8. 科学实验楼       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Science Lab Complex</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">配备了先进的实验设备和专业实验室，供理工科学生进行实践操作和科研项目。是理论与实践结合的场所。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4018　<b>经度</b>：113.7578       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_4e4250cde30de3a8879d491746608262.setContent(html_5159a01d1c7ab6bbd034ad2e88df304d);
+            
+        
+
+        circle_marker_7669dd944d9f0bce96627b068abca0d9.bindPopup(popup_4e4250cde30de3a8879d491746608262)
+        ;
+
+        
+    
+    
+            circle_marker_7669dd944d9f0bce96627b068abca0d9.bindTooltip(
+                `<div>
+                     8. 科学实验楼
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_311a15421aad1beaa246d1481e87ca8e = L.marker(
+                [34.4018, 113.7578],
+                {
+}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+            var div_icon_215a5e8504a77685b2339082ea62b321 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#2c6fd1;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e8\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_18350df2987c5f42dc3b12befcd37565 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a1e241643e2b68f62a28660188abeb16 = $(`<div id="html_a1e241643e2b68f62a28660188abeb16" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         8. 科学实验楼       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Science Lab Complex</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">配备了先进的实验设备和专业实验室，供理工科学生进行实践操作和科研项目。是理论与实践结合的场所。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4018　<b>经度</b>：113.7578       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_18350df2987c5f42dc3b12befcd37565.setContent(html_a1e241643e2b68f62a28660188abeb16);
+            
+        
+
+        marker_311a15421aad1beaa246d1481e87ca8e.bindPopup(popup_18350df2987c5f42dc3b12befcd37565)
+        ;
+
+        
+    
+    
+            marker_311a15421aad1beaa246d1481e87ca8e.bindTooltip(
+                `<div>
+                     科学实验楼
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_311a15421aad1beaa246d1481e87ca8e.setIcon(div_icon_215a5e8504a77685b2339082ea62b321);
+            
+    
+            var circle_marker_d7165c4c62d5300549921360d93b32fc = L.circleMarker(
+                [34.4015, 113.76],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+        var popup_d76fd2734745ac89fc0893d3daea9afa = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b0c9aee50d83303ca2767a394da4c242 = $(`<div id="html_b0c9aee50d83303ca2767a394da4c242" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         13. 西亚斯学院体育馆       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">SIAS Gymnasium</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的室内体育训练设施，提供篮球、羽毛球等多种运动项目。它是学生进行体育锻炼和保持健康的理想场所。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4015　<b>经度</b>：113.76       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_d76fd2734745ac89fc0893d3daea9afa.setContent(html_b0c9aee50d83303ca2767a394da4c242);
+            
+        
+
+        circle_marker_d7165c4c62d5300549921360d93b32fc.bindPopup(popup_d76fd2734745ac89fc0893d3daea9afa)
+        ;
+
+        
+    
+    
+            circle_marker_d7165c4c62d5300549921360d93b32fc.bindTooltip(
+                `<div>
+                     13. 西亚斯学院体育馆
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_952b3a4e6efb6f625f9abe925963e92e = L.marker(
+                [34.4015, 113.76],
+                {
+}
+            ).addTo(feature_group_03701717bbba028b8113448a3f5f3f20);
+        
+    
+            var div_icon_fcb91dd8d550b56c1b0858e50cc6ed5f = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#2c6fd1;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e13\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_f28aaf1f75fdd1ff0a6601f2577407e3 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7fee622dd867f3dcb5c844678ab77e93 = $(`<div id="html_7fee622dd867f3dcb5c844678ab77e93" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         13. 西亚斯学院体育馆       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">SIAS Gymnasium</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的室内体育训练设施，提供篮球、羽毛球等多种运动项目。它是学生进行体育锻炼和保持健康的理想场所。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：教学/科研<br>         <b>纬度</b>：34.4015　<b>经度</b>：113.76       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_f28aaf1f75fdd1ff0a6601f2577407e3.setContent(html_7fee622dd867f3dcb5c844678ab77e93);
+            
+        
+
+        marker_952b3a4e6efb6f625f9abe925963e92e.bindPopup(popup_f28aaf1f75fdd1ff0a6601f2577407e3)
+        ;
+
+        
+    
+    
+            marker_952b3a4e6efb6f625f9abe925963e92e.bindTooltip(
+                `<div>
+                     西亚斯学院体育馆
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_952b3a4e6efb6f625f9abe925963e92e.setIcon(div_icon_fcb91dd8d550b56c1b0858e50cc6ed5f);
+            
+    
+            feature_group_03701717bbba028b8113448a3f5f3f20.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var feature_group_553290de3a89fc2e43d908cc47d4c568 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_a414c1b2fa8fa16e90145b05c6d19db7 = L.circleMarker(
+                [34.401, 113.7605],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_553290de3a89fc2e43d908cc47d4c568);
+        
+    
+        var popup_aed52c541189f30a0fe1611410e15335 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_42298be528a988f624809629472dfbfd = $(`<div id="html_42298be528a988f624809629472dfbfd" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         5. 体育场馆       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Sports Stadium</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">用于体育锻炼和大型体育活动的场所。学生们在这里进行篮球、足球等运动，是健康生活的重要基地。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：宿舍/生活<br>         <b>纬度</b>：34.401　<b>经度</b>：113.7605       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_aed52c541189f30a0fe1611410e15335.setContent(html_42298be528a988f624809629472dfbfd);
+            
+        
+
+        circle_marker_a414c1b2fa8fa16e90145b05c6d19db7.bindPopup(popup_aed52c541189f30a0fe1611410e15335)
+        ;
+
+        
+    
+    
+            circle_marker_a414c1b2fa8fa16e90145b05c6d19db7.bindTooltip(
+                `<div>
+                     5. 体育场馆
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3afc0c65962cc148683158fe987adbb0 = L.marker(
+                [34.401, 113.7605],
+                {
+}
+            ).addTo(feature_group_553290de3a89fc2e43d908cc47d4c568);
+        
+    
+            var div_icon_91b1dc0f6df9a608fdba49e70802c254 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#e8820c;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e5\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_63804555d112ca2c099ef84d47ac014c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_663fe23b4ee4c773f8646d395e5dbc63 = $(`<div id="html_663fe23b4ee4c773f8646d395e5dbc63" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         5. 体育场馆       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Sports Stadium</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">用于体育锻炼和大型体育活动的场所。学生们在这里进行篮球、足球等运动，是健康生活的重要基地。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：宿舍/生活<br>         <b>纬度</b>：34.401　<b>经度</b>：113.7605       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_63804555d112ca2c099ef84d47ac014c.setContent(html_663fe23b4ee4c773f8646d395e5dbc63);
+            
+        
+
+        marker_3afc0c65962cc148683158fe987adbb0.bindPopup(popup_63804555d112ca2c099ef84d47ac014c)
+        ;
+
+        
+    
+    
+            marker_3afc0c65962cc148683158fe987adbb0.bindTooltip(
+                `<div>
+                     体育场馆
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3afc0c65962cc148683158fe987adbb0.setIcon(div_icon_91b1dc0f6df9a608fdba49e70802c254);
+            
+    
+            var circle_marker_f31036e330c4a4d5a785a428bccce899 = L.circleMarker(
+                [34.4012, 113.76],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_553290de3a89fc2e43d908cc47d4c568);
+        
+    
+        var popup_20c66015f93637fbc0c2f123b7a787c7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6c11a86ca55e9bf7d2992d3a709eb28b = $(`<div id="html_6c11a86ca55e9bf7d2992d3a709eb28b" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         11. 学生活动中心       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Student Activity Center</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">用于举办社团活动、文化交流和学生聚会的场所。这里是学生们展现才华、增进友谊的舞台。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：宿舍/生活<br>         <b>纬度</b>：34.4012　<b>经度</b>：113.76       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_20c66015f93637fbc0c2f123b7a787c7.setContent(html_6c11a86ca55e9bf7d2992d3a709eb28b);
+            
+        
+
+        circle_marker_f31036e330c4a4d5a785a428bccce899.bindPopup(popup_20c66015f93637fbc0c2f123b7a787c7)
+        ;
+
+        
+    
+    
+            circle_marker_f31036e330c4a4d5a785a428bccce899.bindTooltip(
+                `<div>
+                     11. 学生活动中心
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6cbf44eb56f0e017e5ed422d03274555 = L.marker(
+                [34.4012, 113.76],
+                {
+}
+            ).addTo(feature_group_553290de3a89fc2e43d908cc47d4c568);
+        
+    
+            var div_icon_18a72d913ff487312118b57cfccd9100 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#e8820c;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e11\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_fadf93491cfd5a3eb8fa6940e54f8fad = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e58f48a01ea528be1171665ca9f16f3c = $(`<div id="html_e58f48a01ea528be1171665ca9f16f3c" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         11. 学生活动中心       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Student Activity Center</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">用于举办社团活动、文化交流和学生聚会的场所。这里是学生们展现才华、增进友谊的舞台。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：宿舍/生活<br>         <b>纬度</b>：34.4012　<b>经度</b>：113.76       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_fadf93491cfd5a3eb8fa6940e54f8fad.setContent(html_e58f48a01ea528be1171665ca9f16f3c);
+            
+        
+
+        marker_6cbf44eb56f0e017e5ed422d03274555.bindPopup(popup_fadf93491cfd5a3eb8fa6940e54f8fad)
+        ;
+
+        
+    
+    
+            marker_6cbf44eb56f0e017e5ed422d03274555.bindTooltip(
+                `<div>
+                     学生活动中心
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6cbf44eb56f0e017e5ed422d03274555.setIcon(div_icon_18a72d913ff487312118b57cfccd9100);
+            
+    
+            var circle_marker_2ba9883375f50535ff061d24182a35ed = L.circleMarker(
+                [34.404, 113.755],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_553290de3a89fc2e43d908cc47d4c568);
+        
+    
+        var popup_1bdd3bc84a4cfd08b3f2d9ba70121b07 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2fd19677640701e6191fcbe31682ed7e = $(`<div id="html_2fd19677640701e6191fcbe31682ed7e" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         12. 周边社区公园       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Local Landmark Park</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">位于学校周边的公共休闲空间，为师生提供了放松身心、享受自然环境的场所。是校园与城市生活连接的桥梁。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：宿舍/生活<br>         <b>纬度</b>：34.404　<b>经度</b>：113.755       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_1bdd3bc84a4cfd08b3f2d9ba70121b07.setContent(html_2fd19677640701e6191fcbe31682ed7e);
+            
+        
+
+        circle_marker_2ba9883375f50535ff061d24182a35ed.bindPopup(popup_1bdd3bc84a4cfd08b3f2d9ba70121b07)
+        ;
+
+        
+    
+    
+            circle_marker_2ba9883375f50535ff061d24182a35ed.bindTooltip(
+                `<div>
+                     12. 周边社区公园
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_48195960daf5ce09a80b07e80b766c8b = L.marker(
+                [34.404, 113.755],
+                {
+}
+            ).addTo(feature_group_553290de3a89fc2e43d908cc47d4c568);
+        
+    
+            var div_icon_553eb813e182a9b991a1e1e6e6ff8bd1 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#e8820c;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e12\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_94c79cbd66d07c5902dae035cd24ff27 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a99b748b4a1f3bcff39324d5fb1f8bae = $(`<div id="html_a99b748b4a1f3bcff39324d5fb1f8bae" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         12. 周边社区公园       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Local Landmark Park</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">位于学校周边的公共休闲空间，为师生提供了放松身心、享受自然环境的场所。是校园与城市生活连接的桥梁。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：宿舍/生活<br>         <b>纬度</b>：34.404　<b>经度</b>：113.755       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_94c79cbd66d07c5902dae035cd24ff27.setContent(html_a99b748b4a1f3bcff39324d5fb1f8bae);
+            
+        
+
+        marker_48195960daf5ce09a80b07e80b766c8b.bindPopup(popup_94c79cbd66d07c5902dae035cd24ff27)
+        ;
+
+        
+    
+    
+            marker_48195960daf5ce09a80b07e80b766c8b.bindTooltip(
+                `<div>
+                     周边社区公园
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_48195960daf5ce09a80b07e80b766c8b.setIcon(div_icon_553eb813e182a9b991a1e1e6e6ff8bd1);
+            
+    
+            feature_group_553290de3a89fc2e43d908cc47d4c568.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var feature_group_8afe91840bba8728b6184ed5439d07b1 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_d9c7c3a8059455f388755399ae5c9939 = L.circleMarker(
+                [34.403, 113.7565],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_8afe91840bba8728b6184ed5439d07b1);
+        
+    
+        var popup_5dbd37e2ba62bf9f9ed7f151cfe2725c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_bb6fb93586c6457121bbd6f1fa3b3056 = $(`<div id="html_bb6fb93586c6457121bbd6f1fa3b3056" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         6. 学生食堂       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Student Canteen</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">提供多样化和经济实惠的餐饮服务，是学生们日常用餐的主要地点。食堂环境整洁，满足不同学生的饮食需求。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：餐饮<br>         <b>纬度</b>：34.403　<b>经度</b>：113.7565       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_5dbd37e2ba62bf9f9ed7f151cfe2725c.setContent(html_bb6fb93586c6457121bbd6f1fa3b3056);
+            
+        
+
+        circle_marker_d9c7c3a8059455f388755399ae5c9939.bindPopup(popup_5dbd37e2ba62bf9f9ed7f151cfe2725c)
+        ;
+
+        
+    
+    
+            circle_marker_d9c7c3a8059455f388755399ae5c9939.bindTooltip(
+                `<div>
+                     6. 学生食堂
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2b5a0285b2d415bb46d21b840f6acae0 = L.marker(
+                [34.403, 113.7565],
+                {
+}
+            ).addTo(feature_group_8afe91840bba8728b6184ed5439d07b1);
+        
+    
+            var div_icon_db46e744c84ddaff1ac3daed63fb10c9 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#d63b3b;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e6\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_3c3f553ce330208adf8b71f5f7b5936a = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2aaf9566afa4a42bb27ce52f8ff367e3 = $(`<div id="html_2aaf9566afa4a42bb27ce52f8ff367e3" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         6. 学生食堂       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Student Canteen</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">提供多样化和经济实惠的餐饮服务，是学生们日常用餐的主要地点。食堂环境整洁，满足不同学生的饮食需求。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：餐饮<br>         <b>纬度</b>：34.403　<b>经度</b>：113.7565       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_3c3f553ce330208adf8b71f5f7b5936a.setContent(html_2aaf9566afa4a42bb27ce52f8ff367e3);
+            
+        
+
+        marker_2b5a0285b2d415bb46d21b840f6acae0.bindPopup(popup_3c3f553ce330208adf8b71f5f7b5936a)
+        ;
+
+        
+    
+    
+            marker_2b5a0285b2d415bb46d21b840f6acae0.bindTooltip(
+                `<div>
+                     学生食堂
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2b5a0285b2d415bb46d21b840f6acae0.setIcon(div_icon_db46e744c84ddaff1ac3daed63fb10c9);
+            
+    
+            feature_group_8afe91840bba8728b6184ed5439d07b1.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var feature_group_0c3eec8e133e558f32fd21b62e3076a4 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_1e8a729b1d06c1bbd13f7a1eafb426f8 = L.circleMarker(
+                [34.402, 113.7595],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "cadetblue", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_0c3eec8e133e558f32fd21b62e3076a4);
+        
+    
+        var popup_cd18785893f00710f5b9c8f11f66a445 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5f45867faa918e2ce803d3a16de5fc43 = $(`<div id="html_5f45867faa918e2ce803d3a16de5fc43" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         7. 行政管理楼       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Administration Building</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的决策和管理中心，负责日常运营、招生、教务等各项事务。所有行政流程都在此办理。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：行政/办公<br>         <b>纬度</b>：34.402　<b>经度</b>：113.7595       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_cd18785893f00710f5b9c8f11f66a445.setContent(html_5f45867faa918e2ce803d3a16de5fc43);
+            
+        
+
+        circle_marker_1e8a729b1d06c1bbd13f7a1eafb426f8.bindPopup(popup_cd18785893f00710f5b9c8f11f66a445)
+        ;
+
+        
+    
+    
+            circle_marker_1e8a729b1d06c1bbd13f7a1eafb426f8.bindTooltip(
+                `<div>
+                     7. 行政管理楼
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_27b98e0b90efe54124f3e5a389cc33db = L.marker(
+                [34.402, 113.7595],
+                {
+}
+            ).addTo(feature_group_0c3eec8e133e558f32fd21b62e3076a4);
+        
+    
+            var div_icon_bbca999dd5f3e2b90f4126e3cf483614 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#4a8f9e;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e7\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_12c60ade13b5933838604c1bedfd0e7c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_29de672fb3640e87ee3a328539fd6795 = $(`<div id="html_29de672fb3640e87ee3a328539fd6795" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         7. 行政管理楼       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Administration Building</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">学校的决策和管理中心，负责日常运营、招生、教务等各项事务。所有行政流程都在此办理。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：行政/办公<br>         <b>纬度</b>：34.402　<b>经度</b>：113.7595       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_12c60ade13b5933838604c1bedfd0e7c.setContent(html_29de672fb3640e87ee3a328539fd6795);
+            
+        
+
+        marker_27b98e0b90efe54124f3e5a389cc33db.bindPopup(popup_12c60ade13b5933838604c1bedfd0e7c)
+        ;
+
+        
+    
+    
+            marker_27b98e0b90efe54124f3e5a389cc33db.bindTooltip(
+                `<div>
+                     行政管理楼
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_27b98e0b90efe54124f3e5a389cc33db.setIcon(div_icon_bbca999dd5f3e2b90f4126e3cf483614);
+            
+    
+            var circle_marker_8f0424ec9bca0759ed57ba286399ff82 = L.circleMarker(
+                [34.4008, 113.7568],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "cadetblue", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_0c3eec8e133e558f32fd21b62e3076a4);
+        
+    
+        var popup_75794eb1478bcdef1453f18f208bbc36 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_73d9189488dadbb6b0ae7f8632a8dc78 = $(`<div id="html_73d9189488dadbb6b0ae7f8632a8dc78" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         9. 教职工办公室       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Faculty Office Block</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">教师和教职员工的工作区域，是学术研究和教学准备的场所。这里是知识创造和传承的源头。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：行政/办公<br>         <b>纬度</b>：34.4008　<b>经度</b>：113.7568       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_75794eb1478bcdef1453f18f208bbc36.setContent(html_73d9189488dadbb6b0ae7f8632a8dc78);
+            
+        
+
+        circle_marker_8f0424ec9bca0759ed57ba286399ff82.bindPopup(popup_75794eb1478bcdef1453f18f208bbc36)
+        ;
+
+        
+    
+    
+            circle_marker_8f0424ec9bca0759ed57ba286399ff82.bindTooltip(
+                `<div>
+                     9. 教职工办公室
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0fce0e13f988bd04274ac3973e8cae69 = L.marker(
+                [34.4008, 113.7568],
+                {
+}
+            ).addTo(feature_group_0c3eec8e133e558f32fd21b62e3076a4);
+        
+    
+            var div_icon_28bbe3c9fcc36fb84b0b5d726b49bc62 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#4a8f9e;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e9\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_79b8c24e0a8fc11bfb6f2bb84a0f2c3e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cafecb396da3c42f03a02921685075c5 = $(`<div id="html_cafecb396da3c42f03a02921685075c5" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         9. 教职工办公室       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Faculty Office Block</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">教师和教职员工的工作区域，是学术研究和教学准备的场所。这里是知识创造和传承的源头。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：行政/办公<br>         <b>纬度</b>：34.4008　<b>经度</b>：113.7568       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_79b8c24e0a8fc11bfb6f2bb84a0f2c3e.setContent(html_cafecb396da3c42f03a02921685075c5);
+            
+        
+
+        marker_0fce0e13f988bd04274ac3973e8cae69.bindPopup(popup_79b8c24e0a8fc11bfb6f2bb84a0f2c3e)
+        ;
+
+        
+    
+    
+            marker_0fce0e13f988bd04274ac3973e8cae69.bindTooltip(
+                `<div>
+                     教职工办公室
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0fce0e13f988bd04274ac3973e8cae69.setIcon(div_icon_28bbe3c9fcc36fb84b0b5d726b49bc62);
+            
+    
+            feature_group_0c3eec8e133e558f32fd21b62e3076a4.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var feature_group_f8a53027c23d5b4188d8da4aba4bf9fb = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_30ef0f48d8e220ab72439d8052507dc6 = L.circleMarker(
+                [34.4045, 113.753],
+                {"bubblingMouseEvents": true, "color": "white", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "darkgreen", "fillOpacity": 0.95, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9, "stroke": true, "weight": 2}
+            ).addTo(feature_group_f8a53027c23d5b4188d8da4aba4bf9fb);
+        
+    
+        var popup_171401a1a277eaf6372d2a9a2ad74e85 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_25100cc7edfa753a0363f7be05683789 = $(`<div id="html_25100cc7edfa753a0363f7be05683789" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         14. 新郑市第一人民医院       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Xin Zheng First People&#x27;s Hospital</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">位于学校周边的重要医疗机构，为师生提供专业的医疗服务和急救支持。它确保了校园社区在健康方面的安全保障。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：周边地标<br>         <b>纬度</b>：34.4045　<b>经度</b>：113.753       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_171401a1a277eaf6372d2a9a2ad74e85.setContent(html_25100cc7edfa753a0363f7be05683789);
+            
+        
+
+        circle_marker_30ef0f48d8e220ab72439d8052507dc6.bindPopup(popup_171401a1a277eaf6372d2a9a2ad74e85)
+        ;
+
+        
+    
+    
+            circle_marker_30ef0f48d8e220ab72439d8052507dc6.bindTooltip(
+                `<div>
+                     14. 新郑市第一人民医院
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_99dc80f0ea4edaa24c523d72e4a76040 = L.marker(
+                [34.4045, 113.753],
+                {
+}
+            ).addTo(feature_group_f8a53027c23d5b4188d8da4aba4bf9fb);
+        
+    
+            var div_icon_11d0a8b2674e9108754705c55ecca111 = L.divIcon({
+  "html": "\n                \u003cdiv style=\"font-size:10px;font-weight:700;color:#fff;\n                            text-align:center;line-height:18px;width:18px;height:18px;\n                            border-radius:50%;background:#1d6b36;\n                            border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);\n                            font-family:\u0027Segoe UI\u0027,sans-serif;\"\u003e14\u003c/div\u003e",
+  "className": "empty",
+});
+        
+    
+        var popup_3a2717feb215c6d68adcf6bfb5b5564e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ca2554fc9414ee8467f1af135e9518ce = $(`<div id="html_ca2554fc9414ee8467f1af135e9518ce" style="width: 100.0%; height: 100.0%;">     <div style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;                 min-width:260px;max-width:330px;line-height:1.6;">       <div style="font-size:16px;font-weight:700;color:#1a3a72;                   border-bottom:2px solid #4a90d9;padding-bottom:6px;margin-bottom:8px;">         14. 新郑市第一人民医院       </div>       <div style="font-size:12px;color:#7a8699;margin-bottom:8px;font-style:italic;">Xin Zheng First People&#x27;s Hospital</div>       <div style="font-size:13px;color:#333;margin-bottom:10px;">位于学校周边的重要医疗机构，为师生提供专业的医疗服务和急救支持。它确保了校园社区在健康方面的安全保障。</div>       <div style="font-size:12px;color:#666;background:#f5f7fa;border-radius:4px;padding:6px 8px;">         <b>类别</b>：周边地标<br>         <b>纬度</b>：34.4045　<b>经度</b>：113.753       </div>       <div style="font-size:10px;color:#aab4c0;margin-top:8px;">         数据来源：本地 Gemma 4 模型（Ollama）生成       </div>     </div>     </div>`)[0];
+                popup_3a2717feb215c6d68adcf6bfb5b5564e.setContent(html_ca2554fc9414ee8467f1af135e9518ce);
+            
+        
+
+        marker_99dc80f0ea4edaa24c523d72e4a76040.bindPopup(popup_3a2717feb215c6d68adcf6bfb5b5564e)
+        ;
+
+        
+    
+    
+            marker_99dc80f0ea4edaa24c523d72e4a76040.bindTooltip(
+                `<div>
+                     新郑市第一人民医院
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99dc80f0ea4edaa24c523d72e4a76040.setIcon(div_icon_11d0a8b2674e9108754705c55ecca111);
+            
+    
+            feature_group_f8a53027c23d5b4188d8da4aba4bf9fb.addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var marker_2b21b4b607207377131b37c6f1c02378 = L.marker(
+                [34.402, 113.758],
+                {
+}
+            ).addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var icon_39b74ab5209c84683e320c87d60d8a83 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "graduation-cap",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35a5c5425d93311ad574207584ef2c18 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_a299d7ac9f02b8be58b546deee4dc1e1 = $(`<div id="html_a299d7ac9f02b8be58b546deee4dc1e1" style="width: 100.0%; height: 100.0%;"><div style='font-family:sans-serif;font-size:13px;'><b>郑州西亚斯学院</b><br>SIAS University<br>河南省郑州市新郑市<br>中心坐标：34.402, 113.758</div></div>`)[0];
+                popup_35a5c5425d93311ad574207584ef2c18.setContent(html_a299d7ac9f02b8be58b546deee4dc1e1);
+            
+        
+
+        marker_2b21b4b607207377131b37c6f1c02378.bindPopup(popup_35a5c5425d93311ad574207584ef2c18)
+        ;
+
+        
+    
+    
+            marker_2b21b4b607207377131b37c6f1c02378.bindTooltip(
+                `<div>
+                     郑州西亚斯学院（中心锚点）
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2b21b4b607207377131b37c6f1c02378.setIcon(icon_39b74ab5209c84683e320c87d60d8a83);
+            
+    
+            var feature_group_5bc2ab7e537908de0a298778ba3bfafd = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_0b4e13993360a8ae9f894c051bb9fa1f = L.polyline(
+                [[34.4012, 113.76], [34.4015, 113.76]],
+                {"bubblingMouseEvents": true, "color": "#e8820c", "dashArray": "8 6", "dashOffset": null, "fill": false, "fillColor": "#e8820c", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.85, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_5bc2ab7e537908de0a298778ba3bfafd);
+        
+    
+            poly_line_0b4e13993360a8ae9f894c051bb9fa1f.bindTooltip(
+                `<div>
+                     最近两点：学生活动中心 ↔ 西亚斯学院体育馆，约 33 米（本地 haversine 工具计算）
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topleft",
+  "title": "\u5168\u5c4f",
+  "titleCancel": "\u9000\u51fa\u5168\u5c4f",
+  "forceSeparateButton": false,
+}
+            ).addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+        
+    
+            var tile_layer_c41de8320ccd78ea6fec9c22584e3361 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_7ad125fb281292a1d038b12c12c791ee = new L.Control.MiniMap(
+                tile_layer_c41de8320ccd78ea6fec9c22584e3361,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_d2c6086729f4dec2cb663a66ad91602f.addControl(mini_map_7ad125fb281292a1d038b12c12c791ee);
+        
+    
+            var measure_control_022cb5a04c023e33c29d6c40852e2041 = new L.Control.Measure(
+                {
+  "position": "bottomleft",
+  "primaryLengthUnit": "meters",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "sqmeters",
+  "secondaryAreaUnit": "acres",
+});
+            map_d2c6086729f4dec2cb663a66ad91602f.addControl(measure_control_022cb5a04c023e33c29d6c40852e2041);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var mouse_position_50b70efecba2e6a042c6d346b2e6cdbb = new L.Control.MousePosition(
+                {
+  "position": "bottomright",
+  "separator": " | ",
+  "emptyString": "Unavailable",
+  "lngFirst": false,
+  "numDigits": 5,
+  "prefix": "\u9f20\u6807\u5750\u6807\uff1a",
+}
+            );
+            mouse_position_50b70efecba2e6a042c6d346b2e6cdbb.options["latFormatter"] =
+                undefined;
+            mouse_position_50b70efecba2e6a042c6d346b2e6cdbb.options["lngFormatter"] =
+                undefined;
+            map_d2c6086729f4dec2cb663a66ad91602f.addControl(mouse_position_50b70efecba2e6a042c6d346b2e6cdbb);
+        
+    
+            var locate_control_10530cc4dd6f150840683d7ac0ddefd9 = L.control.locate(
+                {"position": "topleft", "strings": {"title": "\u5b9a\u4f4d\u5230\u6211"}}
+            ).addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+            
+        
+    
+            var layer_control_241105b3e8476c3b932849b5b5b6f2e4_layers = {
+                base_layers : {
+                    "\u9ad8\u5fb7\u8857\u9053\u56fe\uff08\u4e2d\u6587\uff09" : tile_layer_59c4d7cc32caff049627941859775443,
+                    "\u9ad8\u5fb7\u536b\u661f\u56fe" : tile_layer_cfc2d561fe6747c88f523ced53e650ca,
+                    "OpenStreetMap\uff08\u82f1\u6587\uff09" : tile_layer_0dbe79e0d513cb08d4e6711b184910e3,
+                },
+                overlays :  {
+                    "\u6821\u95e8/\u5165\u53e3\uff082\uff09" : feature_group_61eef9947a3460d38deac64d5173b78b,
+                    "\u56fe\u4e66\u9986\uff081\uff09" : feature_group_854257164172119c779d5beea6a2291d,
+                    "\u6559\u5b66/\u79d1\u7814\uff084\uff09" : feature_group_03701717bbba028b8113448a3f5f3f20,
+                    "\u5bbf\u820d/\u751f\u6d3b\uff083\uff09" : feature_group_553290de3a89fc2e43d908cc47d4c568,
+                    "\u9910\u996e\uff081\uff09" : feature_group_8afe91840bba8728b6184ed5439d07b1,
+                    "\u884c\u653f/\u529e\u516c\uff082\uff09" : feature_group_0c3eec8e133e558f32fd21b62e3076a4,
+                    "\u5468\u8fb9\u5730\u6807\uff081\uff09" : feature_group_f8a53027c23d5b4188d8da4aba4bf9fb,
+                    "\u6700\u8fd1\u4e24\u70b9\u8fde\u7ebf\uff08\u5de5\u5177\u8c03\u7528\u6f14\u793a\uff09" : feature_group_5bc2ab7e537908de0a298778ba3bfafd,
+                },
+            };
+            let layer_control_241105b3e8476c3b932849b5b5b6f2e4 = L.control.layers(
+                layer_control_241105b3e8476c3b932849b5b5b6f2e4_layers.base_layers,
+                layer_control_241105b3e8476c3b932849b5b5b6f2e4_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_d2c6086729f4dec2cb663a66ad91602f);
+
+        
+</script>
+</html>

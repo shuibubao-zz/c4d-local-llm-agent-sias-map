@@ -1,0 +1,12 @@
+[{"name":"Main Gate","name_zh":"主校门","latitude":34.403500,"longitude":113.759000,"description":"学校的主要入口，是学生和访客进入校园的门户。这里通常是活动和集会的起点，象征着学术旅程的开始。"},
+{"name":"Central Library","name_zh":"中央图书馆","latitude":34.401500,"longitude":113.757500,"description":"学校的核心学习资源中心，提供丰富的学术书籍、电子数据库和安静的学习环境，是所有学生重要的求知场所。"},
+{"name":"Student Dormitory A","name_zh":"学生宿舍A区","latitude":34.400500,"longitude":113.758500,"description":"为学生提供的住宿区域，设施齐全，是学生们生活和休息的主要场所。宿舍区紧邻教学楼，方便学生日常通勤。"},
+{"name":"Main Lecture Hall","name_zh":"主教学楼","latitude":34.402500,"longitude":113.757000,"description":"学校最大的教学场所，用于举办大型讲座、毕业典礼和集体课程。这里是知识传播和学术交流的重要中心。"},
+{"name":"Sports Stadium","name_zh":"体育场馆","latitude":34.401000,"longitude":113.760500,"description":"用于体育锻炼和大型体育活动的场所。学生们在这里进行篮球、足球等运动，是健康生活的重要基地。"},
+{"name":"Student Canteen","name_zh":"学生食堂","latitude":34.403000,"longitude":113.756500,"description":"提供多样化和经济实惠的餐饮服务，是学生们日常用餐的主要地点。食堂环境整洁，满足不同学生的饮食需求。"},
+{"name":"Administration Building","name_zh":"行政管理楼","latitude":34.402000,"longitude":113.759500,"description":"学校的决策和管理中心，负责日常运营、招生、教务等各项事务。所有行政流程都在此办理。"},
+{"name":"Science Lab Complex","name_zh":"科学实验楼","latitude":34.401800,"longitude":113.757800,"description":"配备了先进的实验设备和专业实验室，供理工科学生进行实践操作和科研项目。是理论与实践结合的场所。"},
+{"name":"Faculty Office Block","name_zh":"教职工办公室","latitude":34.400800,"longitude":113.756800,"description":"教师和教职员工的工作区域，是学术研究和教学准备的场所。这里是知识创造和传承的源头。"},
+{"name":"North Campus Gate","name_zh":"北校门","latitude":34.403800,"longitude":113.758200,"description":"校园的另一侧入口，连接着周边社区和交通网络。它为校园提供了便捷的外部通道和人流进出。"},
+{"name":"Student Activity Center","name_zh":"学生活动中心","latitude":34.401200,"longitude":113.760000,"description":"用于举办社团活动、文化交流和学生聚会的场所。这里是学生们展现才华、增进友谊的舞台。"},
+{"name":"Local Landmark Park","name_zh":"周边社区公园","latitude":34.404000,"longitude":113.755000,"description":"位于学校周边的公共休闲空间，为师生提供了放松身心、享受自然环境的场所。是校园与城市生活连接的桥梁。"}]

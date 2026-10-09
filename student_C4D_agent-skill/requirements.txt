@@ -1,0 +1,30 @@
+# student_C4D_agent-skill 依赖清单
+# ============================================================
+# 安装方式：
+#     pip install -r requirements.txt
+#
+# 说明：
+#   * 本项目**不需要任何云端大模型 SDK**（不需 openai / anthropic / dashscope 等），
+#     全部推理走本地 Ollama 的 HTTP 接口，仅依赖 requests 发本地请求。
+#   * 版本号为实测可用组合（见 student_C4D_验证报告.md 的环境表），
+#     写成 >= 是为了兼容更新版本；如需完全复现，可用 == 锁定。
+# ============================================================
+
+# ---- 核心运行依赖 ----
+requests>=2.31.0        # 调用本地 Ollama 的 OpenAI 兼容接口（http://localhost:11434）
+folium>=0.15.0          # 生成交互式 HTML 地图（底层是 Leaflet.js）
+
+# folium 会自动带上这两个（显式写出便于理解依赖树）：
+branca>=0.7.0           # folium 的 HTML/JS 模板引擎
+xyzservices>=2023.7.0   # 瓦片图层元数据
+
+# ---- 说明 ----
+# 本机实测版本（2026-10 采集）：
+#     Python 3.13.12
+#     requests 2.34.2
+#     folium   0.20.0
+#     branca   0.8.2
+#
+# 本地推理服务（不属于 pip 依赖，需单独安装）：
+#     Ollama 0.40.2   —— https://ollama.com/download
+#     模型 gemma4:e4b-it-q4_K_M  —— ollama pull gemma4:e4b-it-q4_K_M

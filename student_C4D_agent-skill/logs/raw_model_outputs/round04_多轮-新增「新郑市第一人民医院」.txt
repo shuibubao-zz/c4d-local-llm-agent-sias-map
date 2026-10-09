@@ -1,0 +1,1 @@
+[{"name":"Xin Zheng First People's Hospital","name_zh":"新郑市第一人民医院","latitude":34.404500,"longitude":113.753000,"description":"位于学校周边的重要医疗机构，为师生提供专业的医疗服务和急救支持。它确保了校园社区在健康方面的安全保障。"}]

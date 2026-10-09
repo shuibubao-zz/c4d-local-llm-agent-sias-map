@@ -1,0 +1,4 @@
+[{"name":"Local Commercial Street","name_zh":"周边商业街","latitude":34.404200,"longitude":113.754000,"description":"位于学校北侧的商业街区，提供了各类餐饮、零售和生活服务，是师生日常购物和休闲的场所。"},
+{"name":"Bus Station Stop","name_zh":"公交站点","latitude":34.403000,"longitude":113.753500,"description":"学校附近重要的公共交通枢纽，方便师生从城市其他区域快速到达校园。是校园与外部世界连接的交通节点。"},
+{"name":"Local Convenience Store","name_zh":"便利店","latitude":34.404500,"longitude":113.755500,"description":"位于校区外围的便利店，提供日常必需品和零食，满足师生在校外快速补给的需求。"},
+]
