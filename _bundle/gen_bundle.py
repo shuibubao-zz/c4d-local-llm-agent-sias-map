@@ -16,7 +16,7 @@ import re
 import datetime
 
 ROOT = r"C:\Users\卢怡然\Desktop\C4D"
-SKILL = os.path.join(ROOT, "student_C4D_agent-skill")
+SKILL = os.path.join(ROOT, "student_C4D_Agent技能")
 OUT = os.path.join(ROOT, "student_C4D_全量合集.md")
 
 SKIP_DIRS = {"__pycache__", "_bundle", ".git"}
@@ -128,7 +128,7 @@ w("| # | 要求交付物 | 工作区实际文件 | 状态 |")
 w("|---|---|---|---|")
 checks = [
     ("1", "方案设计文档", "`student_C4D_方案设计.md`（28,627 B）"),
-    ("2", "Agent 技能源码目录", "`student_C4D_agent-skill/`（12 个 .py + requirements.txt + README.md）"),
+    ("2", "Agent 技能源码目录", "`student_C4D_Agent技能/`（12 个 .py + requirements.txt + README.md）"),
     ("3", "生成的地图", "`student_C4D_map.html`（87,314 B）"),
     ("4", "截图目录", "`student_C4D_output_screenshots/`（含截图清单 + 1 张代码自动生成的渲染预览）"),
     ("5", "验证报告", "`student_C4D_验证报告.md`（19,272 B）"),
@@ -159,25 +159,25 @@ w("""main.py                          ← 入口，四种运行模式（默认 /
 w("```")
 
 sources = [
-    ("student_C4D_agent-skill/config.py", "python"),
-    ("student_C4D_agent-skill/json_repair.py", "python"),
-    ("student_C4D_agent-skill/ollama_client.py", "python"),
-    ("student_C4D_agent-skill/agent.py", "python"),
-    ("student_C4D_agent-skill/map_generator.py", "python"),
-    ("student_C4D_agent-skill/tools.py", "python"),
-    ("student_C4D_agent-skill/logger.py", "python"),
-    ("student_C4D_agent-skill/check_env.py", "python"),
-    ("student_C4D_agent-skill/main.py", "python"),
-    ("student_C4D_agent-skill/run_demo.py", "python"),
-    ("student_C4D_agent-skill/selftest_offline.py", "python"),
-    ("student_C4D_agent-skill/rebuild_ai_log.py", "python"),
-    ("student_C4D_agent-skill/requirements.txt", "text"),
+    ("student_C4D_Agent技能/config.py", "python"),
+    ("student_C4D_Agent技能/json_repair.py", "python"),
+    ("student_C4D_Agent技能/ollama_client.py", "python"),
+    ("student_C4D_Agent技能/agent.py", "python"),
+    ("student_C4D_Agent技能/map_generator.py", "python"),
+    ("student_C4D_Agent技能/tools.py", "python"),
+    ("student_C4D_Agent技能/logger.py", "python"),
+    ("student_C4D_Agent技能/check_env.py", "python"),
+    ("student_C4D_Agent技能/main.py", "python"),
+    ("student_C4D_Agent技能/run_demo.py", "python"),
+    ("student_C4D_Agent技能/selftest_offline.py", "python"),
+    ("student_C4D_Agent技能/rebuild_ai_log.py", "python"),
+    ("student_C4D_Agent技能/requirements.txt", "text"),
 ]
 for rel, lang in sources:
     w(block_code(rel, os.path.join(ROOT, rel.replace("/", os.sep)), lang))
 
 # 技能自带 README 也是 Markdown，走文档通道
-w(block_doc("student_C4D_agent-skill/README.md", os.path.join(SKILL, "README.md")))
+w(block_doc("student_C4D_Agent技能/README.md", os.path.join(SKILL, "README.md")))
 
 # ---------- 四、文档 ----------
 w("\n---\n\n## 四、全部 Markdown 文档完整文本\n")
@@ -195,16 +195,16 @@ for rel in docs:
 
 # ---------- 五、日志附录 ----------
 w("\n---\n\n## 五、运行日志附录（原始留档）\n")
-w("> 下列文件位于 `student_C4D_agent-skill/logs/`，是本地真实运行后落盘的原始证据，"
+w("> 下列文件位于 `student_C4D_Agent技能/logs/`，是本地真实运行后落盘的原始证据，"
   "未经任何修饰，可直接作为「确实在本地跑过」的佐证。\n")
 logs = [
-    ("student_C4D_agent-skill/logs/env_report.json", "json"),
-    ("student_C4D_agent-skill/logs/env_check_console.txt", "text"),
-    ("student_C4D_agent-skill/logs/main_run_console.txt", "text"),
-    ("student_C4D_agent-skill/logs/raw_model_outputs/round01_首轮-生成地点数据.txt", "text"),
-    ("student_C4D_agent-skill/logs/raw_model_outputs/round02_容错对抗测试-故意诱导脏输出.txt", "text"),
-    ("student_C4D_agent-skill/logs/raw_model_outputs/round03_多轮-新增「西亚斯学院体育馆」.txt", "text"),
-    ("student_C4D_agent-skill/logs/raw_model_outputs/round04_多轮-新增「新郑市第一人民医院」.txt", "text"),
+    ("student_C4D_Agent技能/logs/env_report.json", "json"),
+    ("student_C4D_Agent技能/logs/env_check_console.txt", "text"),
+    ("student_C4D_Agent技能/logs/main_run_console.txt", "text"),
+    ("student_C4D_Agent技能/logs/raw_model_outputs/round01_首轮-生成地点数据.txt", "text"),
+    ("student_C4D_Agent技能/logs/raw_model_outputs/round02_容错对抗测试-故意诱导脏输出.txt", "text"),
+    ("student_C4D_Agent技能/logs/raw_model_outputs/round03_多轮-新增「西亚斯学院体育馆」.txt", "text"),
+    ("student_C4D_Agent技能/logs/raw_model_outputs/round04_多轮-新增「新郑市第一人民医院」.txt", "text"),
 ]
 for rel, lang in logs:
     p = os.path.join(ROOT, rel.replace("/", os.sep))

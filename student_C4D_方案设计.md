@@ -386,7 +386,7 @@ C4D 硬性约束：**不调用外部第三方地图 API 获取点位信息，点
 | # | 文件/目录 | 说明 | 是否强制 |
 |---|---|---|---|
 | 1 | `student_C4D_方案设计.md` | 本文件 | ✅ |
-| 2 | `student_C4D_agent-skill/` | 全部 Python 源码 + requirements.txt | ✅ |
+| 2 | `student_C4D_Agent技能/` | 全部 Python 源码 + requirements.txt | ✅ |
 | 3 | `student_C4D_map.html` | Folium 输出的交互式地图 | ✅ |
 | 4 | `student_C4D_output_screenshots/` | 运行截图（含截图清单） | ✅ |
 | 5 | `student_C4D_验证报告.md` | 验证报告 + 五维度自查 | ✅ |
@@ -414,7 +414,7 @@ C4D/                                    ← 工作区根目录（交付物全部
 ├── student_C4D_output_screenshots/      ★ 截图目录（待本人按清单补充）
 │   └── 截图清单.md                      (10.1 KB)  ← 11 张截图 + 录屏脚本要求
 │
-└── student_C4D_agent-skill/             ★ Agent 技能包（全部源码）
+└── student_C4D_Agent技能/             ★ Agent 技能包（全部源码）
     ├── config.py                        (10.7 KB)  四项关键信息单一事实源 + 提示词
     ├── ollama_client.py                 (10.8 KB)  Ollama OpenAI 兼容接口封装
     ├── json_repair.py                   (14.2 KB)  五级 JSON 容错解析 + 字段校验
@@ -445,7 +445,7 @@ C4D/                                    ← 工作区根目录（交付物全部
 
 > **为什么地图与 AI 日志在两处各有一份？**
 > 交付模板要求所有文件并列摆在工作区目录下，而代码必须住在
-> `student_C4D_agent-skill/` 子目录里才能自成一体。因此脚本运行结束后会自动把
+> `student_C4D_Agent技能/` 子目录里才能自成一体。因此脚本运行结束后会自动把
 > 这两个文件同步一份到根目录（见 `main.py` 的 `publish_to_workspace()`）——
 > 两处内容**字节一致**，评审看哪一份都可以。
 

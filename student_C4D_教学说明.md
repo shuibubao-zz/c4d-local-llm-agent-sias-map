@@ -207,7 +207,7 @@ curl http://localhost:11434/v1/chat/completions ^
 ### 4.1 进入技能包目录
 
 ```bash
-cd student_C4D_agent-skill
+cd student_C4D_Agent技能
 ```
 
 ### 4.2 安装依赖
@@ -434,7 +434,7 @@ python main.py --demo
 运行结束后，目录下会多出这些文件：
 
 ```
-student_C4D_agent-skill/
+student_C4D_Agent技能/
 ├── student_C4D_map.html            ← 交互式地图（双击打开）
 ├── student_C4D_AI日志.md            ← 完整对话日志（强制交付物）
 └── logs/
@@ -607,7 +607,7 @@ python -X utf8 main.py
 # 前置：已安装 Ollama 并已 ollama serve
 
 ollama pull gemma4:e4b-it-q4_K_M          # ① 拉模型（约 6.2 GB）
-cd student_C4D_agent-skill                 # ② 进目录
+cd student_C4D_Agent技能                 # ② 进目录
 pip install -r requirements.txt            # ③ 装依赖
 python selftest_offline.py                 # ④ 离线自检（应 29/29）
 python check_env.py                        # ⑤ 四项关键信息取证 → 截图

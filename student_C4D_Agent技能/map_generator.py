@@ -297,7 +297,7 @@ def generate_map(locations: List[Dict[str, Any]],
         f"<title>{html.escape(title)} · 本地 Gemma 4 生成</title>\n"
         f"<meta name=\"description\" content=\"由本地 Gemma 4 模型（{config.MODEL_NAME}，"
         f"量化 {config.QUANTIZATION}，Ollama 本地推理）生成的地点数据渲染而成\">\n"
-        f"<meta name=\"generator\" content=\"student_C4D_agent-skill (Python + Folium)\">"))
+        f"<meta name=\"generator\" content=\"student_C4D_Agent技能 (Python + Folium)\">"))
     m.get_root().html.add_child(folium.Element(panel_html))
     m.get_root().html.add_child(folium.Element(
         f"<div style='position:fixed;bottom:8px;left:8px;z-index:9998;font-size:11px;"

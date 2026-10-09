@@ -203,7 +203,7 @@ def test_map_pipeline() -> None:
 # ---------------------------------------------------------------------------
 def main() -> int:
     print("=" * 74)
-    print("  student_C4D_agent-skill · 离线自检（无需模型 / 无需联网）")
+    print("  student_C4D_Agent技能 · 离线自检（无需模型 / 无需联网）")
     print("=" * 74)
     test_parsers()
     test_validation()

@@ -1,4 +1,4 @@
-# student_C4D_agent-skill
+# student_C4D_Agent技能
 
 > C4D 本地大模型 Agent 技能包 —— 用**本地 Gemma 4 模型**驱动 Agent，
 > 生成 SIAS University（郑州西亚斯学院）周边的交互式地图。
@@ -37,7 +37,7 @@
 ## 3. 文件结构
 
 ```
-student_C4D_agent-skill/
+student_C4D_Agent技能/
 ├── config.py            # 全局配置：模型名/量化/提示词/地图锚点（四项关键信息的单一事实源）
 ├── ollama_client.py     # Ollama OpenAI 兼容接口封装（只打 localhost，含预检与 tok/s 统计）
 ├── json_repair.py       # 五级递进 JSON 容错解析器  ← Agent 能力核心

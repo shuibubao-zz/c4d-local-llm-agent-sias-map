@@ -51,7 +51,7 @@ def publish_to_workspace() -> None:
     把地图与 AI 日志同步一份到工作区根目录。
 
     原因：C4D 的交付物要求所有文件并列摆在工作区目录下，
-    而代码住在 `student_C4D_agent-skill/` 子目录里。
+    而代码住在 `student_C4D_Agent技能/` 子目录里。
     这里做一次同步，两份都在，既满足交付要求，也保证技能包自包含。
     """
     here = os.path.dirname(os.path.abspath(__file__))

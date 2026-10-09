@@ -3,7 +3,7 @@
 > 本报告记录 **真实运行** 的结果。所有数字均来自本机实测日志，
 > 不做估算、不做外推。每个数字都标注了**出处文件**，可逐一复核。
 >
-> 复核入口：`student_C4D_agent-skill/logs/`（原始 JSONL、模型原文快照、控制台输出）
+> 复核入口：`student_C4D_Agent技能/logs/`（原始 JSONL、模型原文快照、控制台输出）
 
 ---
 
@@ -338,7 +338,7 @@ C4D 有**两套评分依据**，本报告两套都对照，避免漏项。
 
 ```bash
 # ① 零依赖验证代码质量（不需要模型、不需要联网）
-cd student_C4D_agent-skill
+cd student_C4D_Agent技能
 python selftest_offline.py
 #   期望：29 项通过，0 项失败
 

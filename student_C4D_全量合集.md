@@ -8,7 +8,7 @@
 ## 一、完整项目目录树
 ```
 student_C4D_项目根目录/
-├── student_C4D_agent-skill/
+├── student_C4D_Agent技能/
 │   ├── logs/
 │   │   ├── raw_model_outputs/
 │   │   │   ├── round01_首轮-生成地点数据.txt  (3,075 B)
@@ -53,7 +53,7 @@ student_C4D_项目根目录/
 | # | 要求交付物 | 工作区实际文件 | 状态 |
 |---|---|---|---|
 | 1 | 方案设计文档 | `student_C4D_方案设计.md`（28,627 B） | ✅ 已交付 |
-| 2 | Agent 技能源码目录 | `student_C4D_agent-skill/`（12 个 .py + requirements.txt + README.md） | ✅ 已交付 |
+| 2 | Agent 技能源码目录 | `student_C4D_Agent技能/`（12 个 .py + requirements.txt + README.md） | ✅ 已交付 |
 | 3 | 生成的地图 | `student_C4D_map.html`（87,314 B） | ✅ 已交付 |
 | 4 | 截图目录 | `student_C4D_output_screenshots/`（含截图清单 + 1 张代码自动生成的渲染预览） | ✅ 已交付 |
 | 5 | 验证报告 | `student_C4D_验证报告.md`（19,272 B） | ✅ 已交付 |
@@ -81,7 +81,7 @@ main.py                          ← 入口，四种运行模式（默认 / --in
 └── run_demo.py                  ← 无人值守演示脚本（录屏用）
 ```
 
-### 文件 `student_C4D_agent-skill/config.py`
+### 文件 `student_C4D_Agent技能/config.py`
 
 ````python
 # -*- coding: utf-8 -*-
@@ -195,7 +195,7 @@ def workspace_root() -> str:
     """
     返回**交付物根目录**。
 
-    场景：交付物要求所有文件并列在工作区目录下，而代码住在 `xxx/student_C4D_agent-skill/`。
+    场景：交付物要求所有文件并列在工作区目录下，而代码住在 `xxx/student_C4D_Agent技能/`。
     因此当本包目录名以 `_agent-skill` 结尾时，认为其父目录就是工作区根目录，
     生成的地图与 AI 日志会在两处各放一份：
       * 工作区根目录 —— 满足交付物并列摆放的要求
@@ -290,7 +290,7 @@ ENABLE_MULTI_TURN = True      # 交互式多轮对话（新增/修改标记点�
 ENABLE_EXTRA_TOOLS = True     # 多工具调用框架（tools/ 目录，预留扩展）
 ````
 
-### 文件 `student_C4D_agent-skill/json_repair.py`
+### 文件 `student_C4D_Agent技能/json_repair.py`
 
 ````python
 # -*- coding: utf-8 -*-
@@ -665,7 +665,7 @@ def drop_invalid_records(data: Any) -> Tuple[List[Dict], List[Dict]]:
     return good, bad
 ````
 
-### 文件 `student_C4D_agent-skill/ollama_client.py`
+### 文件 `student_C4D_Agent技能/ollama_client.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -910,7 +910,7 @@ class OllamaClient:
         ], **kwargs)
 ```
 
-### 文件 `student_C4D_agent-skill/agent.py`
+### 文件 `student_C4D_Agent技能/agent.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -1163,7 +1163,7 @@ class SiasMapAgent:
         return self.logger.stats()
 ```
 
-### 文件 `student_C4D_agent-skill/map_generator.py`
+### 文件 `student_C4D_Agent技能/map_generator.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -1465,7 +1465,7 @@ def generate_map(locations: List[Dict[str, Any]],
         f"<title>{html.escape(title)} · 本地 Gemma 4 生成</title>\n"
         f"<meta name=\"description\" content=\"由本地 Gemma 4 模型（{config.MODEL_NAME}，"
         f"量化 {config.QUANTIZATION}，Ollama 本地推理）生成的地点数据渲染而成\">\n"
-        f"<meta name=\"generator\" content=\"student_C4D_agent-skill (Python + Folium)\">"))
+        f"<meta name=\"generator\" content=\"student_C4D_Agent技能 (Python + Folium)\">"))
     m.get_root().html.add_child(folium.Element(panel_html))
     m.get_root().html.add_child(folium.Element(
         f"<div style='position:fixed;bottom:8px;left:8px;z-index:9998;font-size:11px;"
@@ -1498,7 +1498,7 @@ def map_stats(locations: List[Dict[str, Any]]) -> Dict[str, Any]:
     }
 ```
 
-### 文件 `student_C4D_agent-skill/tools.py`
+### 文件 `student_C4D_Agent技能/tools.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -1733,7 +1733,7 @@ def nearest_pair(locations: List[Dict[str, Any]]) -> Optional[Tuple[Dict, Dict, 
     return best
 ```
 
-### 文件 `student_C4D_agent-skill/logger.py`
+### 文件 `student_C4D_Agent技能/logger.py`
 
 ````python
 # -*- coding: utf-8 -*-
@@ -1922,7 +1922,7 @@ class AgentLogger:
         }
 ````
 
-### 文件 `student_C4D_agent-skill/check_env.py`
+### 文件 `student_C4D_Agent技能/check_env.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -2201,7 +2201,7 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### 文件 `student_C4D_agent-skill/main.py`
+### 文件 `student_C4D_Agent技能/main.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -2257,7 +2257,7 @@ def publish_to_workspace() -> None:
     把地图与 AI 日志同步一份到工作区根目录。
 
     原因：C4D 的交付物要求所有文件并列摆在工作区目录下，
-    而代码住在 `student_C4D_agent-skill/` 子目录里。
+    而代码住在 `student_C4D_Agent技能/` 子目录里。
     这里做一次同步，两份都在，既满足交付要求，也保证技能包自包含。
     """
     here = os.path.dirname(os.path.abspath(__file__))
@@ -2560,7 +2560,7 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### 文件 `student_C4D_agent-skill/run_demo.py`
+### 文件 `student_C4D_Agent技能/run_demo.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -2721,7 +2721,7 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### 文件 `student_C4D_agent-skill/selftest_offline.py`
+### 文件 `student_C4D_Agent技能/selftest_offline.py`
 
 ````python
 # -*- coding: utf-8 -*-
@@ -2929,7 +2929,7 @@ def test_map_pipeline() -> None:
 # ---------------------------------------------------------------------------
 def main() -> int:
     print("=" * 74)
-    print("  student_C4D_agent-skill · 离线自检（无需模型 / 无需联网）")
+    print("  student_C4D_Agent技能 · 离线自检（无需模型 / 无需联网）")
     print("=" * 74)
     test_parsers()
     test_validation()
@@ -2953,7 +2953,7 @@ if __name__ == "__main__":
     sys.exit(main())
 ````
 
-### 文件 `student_C4D_agent-skill/rebuild_ai_log.py`
+### 文件 `student_C4D_Agent技能/rebuild_ai_log.py`
 
 ```python
 # -*- coding: utf-8 -*-
@@ -3166,10 +3166,10 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-### 文件 `student_C4D_agent-skill/requirements.txt`
+### 文件 `student_C4D_Agent技能/requirements.txt`
 
 ```text
-# student_C4D_agent-skill 依赖清单
+# student_C4D_Agent技能 依赖清单
 # ============================================================
 # 安装方式：
 #     pip install -r requirements.txt
@@ -3201,11 +3201,11 @@ xyzservices>=2023.7.0   # 瓦片图层元数据
 #     模型 gemma4:e4b-it-q4_K_M  —— ollama pull gemma4:e4b-it-q4_K_M
 ```
 
-### 文件 `student_C4D_agent-skill/README.md`
+### 文件 `student_C4D_Agent技能/README.md`
 
 > 以下为该文件全文，逐字复制，未做任何删改；仅把文内标题层级整体下调 2 级，以免与合集自身章节标题同层。
 
-### student_C4D_agent-skill
+### student_C4D_Agent技能
 
 > C4D 本地大模型 Agent 技能包 —— 用**本地 Gemma 4 模型**驱动 Agent，
 > 生成 SIAS University（郑州西亚斯学院）周边的交互式地图。
@@ -3244,7 +3244,7 @@ xyzservices>=2023.7.0   # 瓦片图层元数据
 #### 3. 文件结构
 
 ```
-student_C4D_agent-skill/
+student_C4D_Agent技能/
 ├── config.py            # 全局配置：模型名/量化/提示词/地图锚点（四项关键信息的单一事实源）
 ├── ollama_client.py     # Ollama OpenAI 兼容接口封装（只打 localhost，含预检与 tok/s 统计）
 ├── json_repair.py       # 五级递进 JSON 容错解析器  ← Agent 能力核心
@@ -3731,7 +3731,7 @@ C4D 硬性约束：**不调用外部第三方地图 API 获取点位信息，点
 | # | 文件/目录 | 说明 | 是否强制 |
 |---|---|---|---|
 | 1 | `student_C4D_方案设计.md` | 本文件 | ✅ |
-| 2 | `student_C4D_agent-skill/` | 全部 Python 源码 + requirements.txt | ✅ |
+| 2 | `student_C4D_Agent技能/` | 全部 Python 源码 + requirements.txt | ✅ |
 | 3 | `student_C4D_map.html` | Folium 输出的交互式地图 | ✅ |
 | 4 | `student_C4D_output_screenshots/` | 运行截图（含截图清单） | ✅ |
 | 5 | `student_C4D_验证报告.md` | 验证报告 + 五维度自查 | ✅ |
@@ -3759,7 +3759,7 @@ C4D/                                    ← 工作区根目录（交付物全部
 ├── student_C4D_output_screenshots/      ★ 截图目录（待本人按清单补充）
 │   └── 截图清单.md                      (10.1 KB)  ← 11 张截图 + 录屏脚本要求
 │
-└── student_C4D_agent-skill/             ★ Agent 技能包（全部源码）
+└── student_C4D_Agent技能/             ★ Agent 技能包（全部源码）
     ├── config.py                        (10.7 KB)  四项关键信息单一事实源 + 提示词
     ├── ollama_client.py                 (10.8 KB)  Ollama OpenAI 兼容接口封装
     ├── json_repair.py                   (14.2 KB)  五级 JSON 容错解析 + 字段校验
@@ -3790,7 +3790,7 @@ C4D/                                    ← 工作区根目录（交付物全部
 
 > **为什么地图与 AI 日志在两处各有一份？**
 > 交付模板要求所有文件并列摆在工作区目录下，而代码必须住在
-> `student_C4D_agent-skill/` 子目录里才能自成一体。因此脚本运行结束后会自动把
+> `student_C4D_Agent技能/` 子目录里才能自成一体。因此脚本运行结束后会自动把
 > 这两个文件同步一份到根目录（见 `main.py` 的 `publish_to_workspace()`）——
 > 两处内容**字节一致**，评审看哪一份都可以。
 
@@ -3814,7 +3814,7 @@ C4D/                                    ← 工作区根目录（交付物全部
 > 本报告记录 **真实运行** 的结果。所有数字均来自本机实测日志，
 > 不做估算、不做外推。每个数字都标注了**出处文件**，可逐一复核。
 >
-> 复核入口：`student_C4D_agent-skill/logs/`（原始 JSONL、模型原文快照、控制台输出）
+> 复核入口：`student_C4D_Agent技能/logs/`（原始 JSONL、模型原文快照、控制台输出）
 
 ---
 
@@ -4149,7 +4149,7 @@ C4D 有**两套评分依据**，本报告两套都对照，避免漏项。
 
 ```bash
 # ① 零依赖验证代码质量（不需要模型、不需要联网）
-cd student_C4D_agent-skill
+cd student_C4D_Agent技能
 python selftest_offline.py
 #   期望：29 项通过，0 项失败
 
@@ -4383,7 +4383,7 @@ curl http://localhost:11434/v1/chat/completions ^
 ##### 4.1 进入技能包目录
 
 ```bash
-cd student_C4D_agent-skill
+cd student_C4D_Agent技能
 ```
 
 ##### 4.2 安装依赖
@@ -4610,7 +4610,7 @@ python main.py --demo
 运行结束后，目录下会多出这些文件：
 
 ```
-student_C4D_agent-skill/
+student_C4D_Agent技能/
 ├── student_C4D_map.html            ← 交互式地图（双击打开）
 ├── student_C4D_AI日志.md            ← 完整对话日志（强制交付物）
 └── logs/
@@ -4783,7 +4783,7 @@ python -X utf8 main.py
 # 前置：已安装 Ollama 并已 ollama serve
 
 ollama pull gemma4:e4b-it-q4_K_M          # ① 拉模型（约 6.2 GB）
-cd student_C4D_agent-skill                 # ② 进目录
+cd student_C4D_Agent技能                 # ② 进目录
 pip install -r requirements.txt            # ③ 装依赖
 python selftest_offline.py                 # ④ 离线自检（应 29/29）
 python check_env.py                        # ⑤ 四项关键信息取证 → 截图
@@ -4971,7 +4971,7 @@ base64 编码与 `/api/generate` 的 `images` 字段适配，属于独立的一�
 #### 5. 项目文件与职责一览
 
 ```
-student_C4D_agent-skill/
+student_C4D_Agent技能/
 ├── config.py              # 配置中枢：四项关键信息 + 提示词 + 地图锚点
 ├── ollama_client.py       # Ollama 接口封装（只打 localhost，含预检 + tok/s 统计）
 ├── json_repair.py         # 五级 JSON 容错解析 + 字段校验      ← Agent 能力核心
@@ -5524,11 +5524,11 @@ C4D 有一条硬性约束：**地点 JSON 必须来自本地模型，禁止代�
 
 ```bash
 # ① 在代码里搜地点坐标数组 —— 预期：搜不到
-grep -rn "34\.4[0-9]\{4\}" student_C4D_agent-skill/*.py | grep -v "MAP_CENTER"
+grep -rn "34\.4[0-9]\{4\}" student_C4D_Agent技能/*.py | grep -v "MAP_CENTER"
 # 预期结果：只匹配到 MAP_CENTER 所在行（校园中心锚点），没有任何地点坐标数组
 
 # ② 看模型原文 —— 预期：能看到模型生成的完整 JSON
-cat student_C4D_agent-skill/logs/raw_model_outputs/round01_*.txt
+cat student_C4D_Agent技能/logs/raw_model_outputs/round01_*.txt
 
 # ③ 比对 —— 原文里的 name_zh 应与地图上看到的一致
 ```
@@ -5907,18 +5907,18 @@ C4D 原文：「**截图/录屏发群里**证明是在本地跑的」。
 
 | 文件 | 内容 |
 |---|---|
-| `../student_C4D_agent-skill/logs/env_report.json` | 环境自检的机器可读结果 |
-| `../student_C4D_agent-skill/logs/agent_calls.jsonl` | 逐轮对话的完整结构化日志 |
-| `../student_C4D_agent-skill/logs/raw_model_outputs/*.txt` | **每轮模型的逐字原文** |
-| `../student_C4D_agent-skill/logs/main_run_console.txt` | 主链路的完整控制台输出 |
+| `../student_C4D_Agent技能/logs/env_report.json` | 环境自检的机器可读结果 |
+| `../student_C4D_Agent技能/logs/agent_calls.jsonl` | 逐轮对话的完整结构化日志 |
+| `../student_C4D_Agent技能/logs/raw_model_outputs/*.txt` | **每轮模型的逐字原文** |
+| `../student_C4D_Agent技能/logs/main_run_console.txt` | 主链路的完整控制台输出 |
 | `../student_C4D_AI日志.md` | 汇总后的人类可读日志（强制交付物） |
 
 ---
 
 ## 五、运行日志附录（原始留档）
-> 下列文件位于 `student_C4D_agent-skill/logs/`，是本地真实运行后落盘的原始证据，未经任何修饰，可直接作为「确实在本地跑过」的佐证。
+> 下列文件位于 `student_C4D_Agent技能/logs/`，是本地真实运行后落盘的原始证据，未经任何修饰，可直接作为「确实在本地跑过」的佐证。
 
-### 文件 `student_C4D_agent-skill/logs/env_report.json`
+### 文件 `student_C4D_Agent技能/logs/env_report.json`
 
 ````json
 {
@@ -6008,7 +6008,7 @@ C4D 原文：「**截图/录屏发群里**证明是在本地跑的」。
 }
 ````
 
-### 文件 `student_C4D_agent-skill/logs/env_check_console.txt`
+### 文件 `student_C4D_Agent技能/logs/env_check_console.txt`
 
 ````text
 
@@ -6073,7 +6073,7 @@ C4D 原文：「**截图/录屏发群里**证明是在本地跑的」。
   自检报告已保存：logs\env_report.json
 ````
 
-### 文件 `student_C4D_agent-skill/logs/main_run_console.txt`
+### 文件 `student_C4D_Agent技能/logs/main_run_console.txt`
 
 ```text
 
@@ -6112,7 +6112,7 @@ C4D 原文：「**截图/录屏发群里**证明是在本地跑的」。
     · 从「主校门」到「主教学楼」：直线距离约 214.6 米（0.215 公里），方向约 西南（238.8°）。
     · 最近两点：中央图书馆 ↔ 科学实验楼，约 43.2 米
 
-[完成] 交互式地图已生成：C:\Users\卢怡然\Desktop\C4D\student_C4D_agent-skill\student_C4D_map.html
+[完成] 交互式地图已生成：C:\Users\卢怡然\Desktop\C4D\student_C4D_Agent技能\student_C4D_map.html
 [完成] AI 日志已写入：student_C4D_AI日志.md
 
 ==================================================================
@@ -6145,7 +6145,7 @@ C4D 原文：「**截图/录屏发群里**证明是在本地跑的」。
   → 已同步交付物到工作区根目录：C:\Users\卢怡然\Desktop\C4D
 ```
 
-### 文件 `student_C4D_agent-skill/logs/raw_model_outputs/round01_首轮-生成地点数据.txt`
+### 文件 `student_C4D_Agent技能/logs/raw_model_outputs/round01_首轮-生成地点数据.txt`
 
 ```text
 [{"name":"Main Gate","name_zh":"主校门","latitude":34.403500,"longitude":113.759000,"description":"学校的主要入口，是学生和访客进入校园的门户。这里通常是活动和集会的起点，象征着学术旅程的开始。"},
@@ -6162,7 +6162,7 @@ C4D 原文：「**截图/录屏发群里**证明是在本地跑的」。
 {"name":"Local Landmark Park","name_zh":"周边社区公园","latitude":34.404000,"longitude":113.755000,"description":"位于学校周边的公共休闲空间，为师生提供了放松身心、享受自然环境的场所。是校园与城市生活连接的桥梁。"}]
 ```
 
-### 文件 `student_C4D_agent-skill/logs/raw_model_outputs/round02_容错对抗测试-故意诱导脏输出.txt`
+### 文件 `student_C4D_Agent技能/logs/raw_model_outputs/round02_容错对抗测试-故意诱导脏输出.txt`
 
 ```text
 [{"name":"Local Commercial Street","name_zh":"周边商业街","latitude":34.404200,"longitude":113.754000,"description":"位于学校北侧的商业街区，提供了各类餐饮、零售和生活服务，是师生日常购物和休闲的场所。"},
@@ -6171,13 +6171,13 @@ C4D 原文：「**截图/录屏发群里**证明是在本地跑的」。
 ]
 ```
 
-### 文件 `student_C4D_agent-skill/logs/raw_model_outputs/round03_多轮-新增「西亚斯学院体育馆」.txt`
+### 文件 `student_C4D_Agent技能/logs/raw_model_outputs/round03_多轮-新增「西亚斯学院体育馆」.txt`
 
 ```text
 [{"name":"SIAS Gymnasium","name_zh":"西亚斯学院体育馆","latitude":34.401500,"longitude":113.760000,"description":"学校的室内体育训练设施，提供篮球、羽毛球等多种运动项目。它是学生进行体育锻炼和保持健康的理想场所。"}]
 ```
 
-### 文件 `student_C4D_agent-skill/logs/raw_model_outputs/round04_多轮-新增「新郑市第一人民医院」.txt`
+### 文件 `student_C4D_Agent技能/logs/raw_model_outputs/round04_多轮-新增「新郑市第一人民医院」.txt`
 
 ```text
 [{"name":"Xin Zheng First People's Hospital","name_zh":"新郑市第一人民医院","latitude":34.404500,"longitude":113.753000,"description":"位于学校周边的重要医疗机构，为师生提供专业的医疗服务和急救支持。它确保了校园社区在健康方面的安全保障。"}]

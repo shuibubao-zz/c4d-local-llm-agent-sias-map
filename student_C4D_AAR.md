@@ -180,11 +180,11 @@ C4D 有一条硬性约束：**地点 JSON 必须来自本地模型，禁止代�
 
 ```bash
 # ① 在代码里搜地点坐标数组 —— 预期：搜不到
-grep -rn "34\.4[0-9]\{4\}" student_C4D_agent-skill/*.py | grep -v "MAP_CENTER"
+grep -rn "34\.4[0-9]\{4\}" student_C4D_Agent技能/*.py | grep -v "MAP_CENTER"
 # 预期结果：只匹配到 MAP_CENTER 所在行（校园中心锚点），没有任何地点坐标数组
 
 # ② 看模型原文 —— 预期：能看到模型生成的完整 JSON
-cat student_C4D_agent-skill/logs/raw_model_outputs/round01_*.txt
+cat student_C4D_Agent技能/logs/raw_model_outputs/round01_*.txt
 
 # ③ 比对 —— 原文里的 name_zh 应与地图上看到的一致
 ```

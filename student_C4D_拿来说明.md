@@ -174,7 +174,7 @@ base64 编码与 `/api/generate` 的 `images` 字段适配，属于独立的一�
 ## 5. 项目文件与职责一览
 
 ```
-student_C4D_agent-skill/
+student_C4D_Agent技能/
 ├── config.py              # 配置中枢：四项关键信息 + 提示词 + 地图锚点
 ├── ollama_client.py       # Ollama 接口封装（只打 localhost，含预检 + tok/s 统计）
 ├── json_repair.py         # 五级 JSON 容错解析 + 字段校验      ← Agent 能力核心
